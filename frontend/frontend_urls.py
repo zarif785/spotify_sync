@@ -1,5 +1,5 @@
 from django.urls import path
-from .frontend_views import index
+from .frontend_view_controller import index
 
 app_name = 'frontend'
 
