@@ -4,51 +4,51 @@ from django.test.client import RequestFactory
 from spotify.spotify_view_controller import *
 
 
-class AuthUrlViewTestCase(unittest.TestCase):
+class AuthUrlViewTest(unittest.TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
         # print("Testing room")
 
-    def test_AuthUrl(self):
+    def test_get_AuthUrl(self):
         request = self.factory.get(reverse('auth'))
        
         response = AuthURL.as_view()(request)
         self.assertEqual(response.status_code, 200)
 
 
-class PauseTestCase(unittest.TestCase):
+class PauseTest(unittest.TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
         # print("Testing room")
 
-    def test_Pause(self):
+    def test_put_Pause(self):
         request = self.factory.get(reverse('pause'))
        
         response = PauseSong.as_view()(request)
         self.assertEqual(response.status_code, 405)
 
 
-class PlayTestCase(unittest.TestCase):
+class PlayTest(unittest.TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
         # print("Testing room")
 
-    def test_Play(self):
+    def test_put_Play(self):
         request = self.factory.get(reverse('play'))
        
         response = PlaySong.as_view()(request)
         self.assertEqual(response.status_code, 402)
 
-class SkipTestCase(unittest.TestCase):
+class SkipTest(unittest.TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
         # print("Testing room")
 
-    def test_Play(self):
+    def test_post_Skip(self):
         request = self.factory.get(reverse('skip'))
        
         response = SkipSong.as_view()(request)

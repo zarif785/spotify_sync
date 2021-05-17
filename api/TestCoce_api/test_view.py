@@ -4,7 +4,7 @@ from django.test.client import RequestFactory
 from api.api_view_controller import RoomView, CreateRoomView, GetRoom, JoinRoom, LeaveRoom, UpdateRoom
 
 
-class RoomViewTestCase(unittest.TestCase):
+class RoomViewTest(unittest.TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
@@ -16,61 +16,61 @@ class RoomViewTestCase(unittest.TestCase):
         response = RoomView.as_view()(request)
         self.assertEqual(response.status_code, 200)
 
-class CreateRoomViewTestCase(unittest.TestCase):
+class CreateRoomViewTest(unittest.TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
         # print("Testing room")
 
-    def test_CreateRoomView(self):
+    def test_post_CreateRoomView(self):
         request = self.factory.get(reverse('create'))
        
         response = CreateRoomView.as_view()(request)
         self.assertEqual(response.status_code, 204) #expected 405
 
-class GetRoomTestCase(unittest.TestCase):
+class GetRoomTest(unittest.TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
         # print("Testing room")
 
-    def test_GetRoomView(self):
+    def test_get_GetRoomView(self):
         request = self.factory.get(reverse('get'))
        
         response = GetRoom.as_view()(request)
         self.assertEqual(response.status_code, 204) #expected 400
 
-class JoinRoomTestCase(unittest.TestCase):
+class JoinRoomTest(unittest.TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
         # print("Testing room")
 
-    def test_JoinRoomView(self):
+    def test_post_JoinRoomView(self):
         request = self.factory.get(reverse('join'))
        
         response = JoinRoom.as_view()(request)
         self.assertEqual(response.status_code, 405) #expected 405
 
-class LeaveRoomTestCase(unittest.TestCase):
+class LeaveRoomTest(unittest.TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
         # print("Testing room")
 
-    def test_LeaveRoomView(self):
+    def test_post_LeaveRoomView(self):
         request = self.factory.get(reverse('leave'))
        
         response = LeaveRoom.as_view()(request)
         self.assertEqual(response.status_code, 405)#expected 405
 
-class UpdateRoomTestCase(unittest.TestCase):
+class UpdateRoomTest(unittest.TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
         # print("Testing room")
 
-    def test_UpdateRoomView(self):
+    def test_patch_UpdateRoomView(self):
         request = self.factory.get(reverse('update'))
        
         response = UpdateRoom.as_view()(request)
